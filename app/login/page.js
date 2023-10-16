@@ -6,8 +6,9 @@ import { signIn, useSession } from 'next-auth/react';
 import { useCartContext } from '../../components/SubLayout'
 import { redirect } from "next/navigation"
 import { FcGoogle } from "react-icons/fc"
+import { useRouter } from 'next/navigation';
 export default function Login() {
-
+const router = useRouter();
   const session = useSession();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("")
@@ -30,7 +31,7 @@ export default function Login() {
     }
     if (session.status === "authenticated") {
       createUserFromGoogle()
-      redirect("/")
+      router.push("/")
     }
   }, [session.status])
 
