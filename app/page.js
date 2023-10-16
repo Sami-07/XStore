@@ -1,113 +1,132 @@
-import Image from 'next/image'
-
+"use client"
+import React, { useEffect, useState, useRef } from 'react';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel'
+import { AiOutlineRight } from 'react-icons/ai';
+import { AiOutlineLeft } from 'react-icons/ai';
+import { BsArrowBarRight } from 'react-icons/bs';
+import { useSession } from 'next-auth/react';
+import ProductSlider from "../components/ProductSlider"
+import Link from 'next/link';
+import { redirect } from 'next/navigation';
+import CustomLoader from '../components/CustomLoader';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
 export default function Home() {
+  const session = useSession();
+  const [products, setProducts] = useState([])
+  const containerRef = useRef(null);
+  useEffect(() => {
+    AOS.init({
+      duration: 1200,
+      once: false
+    })
+  }, [])
+  useEffect(() => {
+    if (session.status === "unauthenticated") {
+      redirect("/login")
+    }
+  }, [session])
+  const CustomArrowPrev = ({ onClick }) => (
+    <button className="custom-arrow prev " onClick={onClick}>
+      <AiOutlineLeft className='text-xl p-1 md:text-4xl border-2 md:p-2 rounded-full bg-white' />
+    </button>
+  );
+  const CustomArrowNext = ({ onClick }) => (
+    <button className="custom-arrow next  " onClick={onClick}>
+      <AiOutlineRight className='text-xl p-1 md:text-4xl border-2 md:p-2 rounded-full bg-white' />
+    </button>
+  );
+  const fetchBestSellingProducts = async () => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/fetchbestproducts`);
+    const response = await res.json();
+    if (response.ok) {
+      setProducts(response.products)
+    }
+  }
+  useEffect(() => {
+    fetchBestSellingProducts();
+  }, [])
+
+  const scrollLeft = () => {
+    const viewportWidth = window.innerWidth;
+    if (containerRef.current) {
+      containerRef.current.scrollLeft -= (19 / 100) * viewportWidth;
+    }
+  };
+
+  const scrollRight = () => {
+    const viewportWidth = window.innerWidth;
+    if (containerRef.current) {
+      containerRef.current.scrollLeft += (19 / 100) * viewportWidth;
+    }
+  };
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main className='mt-32 md:mt-20 min-h-screen'>
+      {!products.length > 0 && <CustomLoader />}
+      <div>
+        {products.length > 0 && <Carousel
+          renderArrowPrev={(clickHandler, hasPrev, label) =>
+            hasPrev && (
+              <div className="absolute left-2 md:left-5  top-1/2 z-10 ">
+                <CustomArrowPrev onClick={clickHandler} />
+              </div>
+            )
+          }
+          renderArrowNext={(clickHandler, hasNext, label) =>
+            hasNext && (
+              <div className="absolute right-2  md:right-5 top-1/2 z-10">
+                <CustomArrowNext onClick={clickHandler} />
+              </div>
+            )
+          }
+          autoPlay={true} interval={3000} infiniteLoop={true} stopOnHover={true} showStatus={false} showThumbs={false} swipeable={true} className='mt-0'>
+          <img src={`/images/carousel/1.png`} alt="img" className="" />
+          <img src={`/images/carousel/2.png`} alt="img" className="" />
+          <img src={`/images/carousel/3.png`} alt="img" className="" />
+          <img src={`/images/carousel/4.png`} alt="img" className="" />
+        </Carousel>}
+        <div className=''  data-aos="fade-up">
+          <ProductSlider category={"ebooks"} topHead={"E Books at X Store"} />
         </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+        {products.length > 0 &&
+          <div  data-aos="fade-up" >
+            <div className=' mt-10 border-2 relative'>
+              <h1 className='text-2xl pt-5 text-center font-semibold my-font-gradient'>
+                Best Sellers
+              </h1>
+              <div className=''>
+                <div ref={containerRef} className='grid auto-cols-auto gap-3 grid-flow-col overflow-x-auto snaps-inline py-4  pt-3'>
+                  <BsArrowBarRight className='absolute top-5 right-5 text-xl md:text-3xl md:right-10' />
+                  <button className='hidden md:block p-1 text-xl  h-10 border-gray-500 border-2 rounded-full md:p-2 z-10 bg-slate-100 absolute top-1/2 left-0 ' onClick={scrollLeft}><AiOutlineLeft /></button>
+                  <button className='hidden md:block p-1 text-xl  h-10 border-gray-500 rounded-full border-2 md:p-2 z-10 bg-slate-100 absolute top-1/2 right-0 md:right-4' onClick={scrollRight}><AiOutlineRight /></button>
+                  {products && products.map(product => {
+                    return (
+                      <Link key={product.slug} className="px-2 py-4 md:p-4 w-[40vw] md:w-[25vw] lg:w-[22vw] mx-auto relative shadow-xl border-2 duration-500 hover:scale-105 hover:border-purple-400 rounded-lg snap-start" href={`/product/${product.slug}`}>
+                        <div >
+                          <img src='/images/top seller.png' className='w-10 md:w-14 absolute top-2' />
+                          <img alt="ecommerce" className="h-[17vh] md:h-[20vh] lg:h-[30vh] p-2 mx-auto" src={product.img} />
+                          <div className="mt-1 text-center">
+                            <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">{product.category}</h3>
+                            <h2 className="text-gray-900  title-font text-xs md:text-sm font-medium">{product.title.substring(0, 20)}...</h2>
+                            <p className="mt-1 font-semibold">₹ {product.price}</p>
+                          </div>
+                        </div>
+                      </Link>
+                    )
+                  })}
+                </div>
+              </div>
+            </div>
+            <div className=''  data-aos="fade-up">
+              <ProductSlider category={"Tshirts"} topHead={"Designer Tshirts at Xstore"} />
+            </div>
+            <div  data-aos="fade-up">
+              <ProductSlider category={"Hoodies"} topHead={"Trending Designer Hoodies"} />
+            </div>
+          </div>}
       </div>
     </main>
-  )
+  );
 }

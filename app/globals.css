@@ -2,26 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+
+.my-text-color {
+    color: #793FDF;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.my-bg-color {
+    background-color: #793FDF;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    overflow-x: hidden;
+    font-family: 'Open Sans';
+}
+
+.snaps-inline::-webkit-scrollbar {
+    height: 2px;
+}
+
+::-webkit-scrollbar {
+    height: 5px;
+    width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #793FDF;
+}
+
+
+.open-font {
+    font-family: 'Open Sans';
+}
+
+.my-font-gradient {
+    background: linear-gradient(90deg, #00dbde, #fc00ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.media-scroller {
+    display: grid;
+    gap: 1rem;
+    grid-auto-flow: column;
+    width: 100%;
+}
+
+.snaps-inline {
+    scroll-snap-type: inline mandatory;
+    scroll-padding-inline: 9rem;
 }
