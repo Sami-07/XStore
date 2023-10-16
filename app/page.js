@@ -23,11 +23,7 @@ export default function Home() {
       once: false
     })
   }, [])
-  useEffect(() => {
-    if (session.status === "unauthenticated") {
-      redirect("/login")
-    }
-  }, [session])
+ 
   const CustomArrowPrev = ({ onClick }) => (
     <button className="custom-arrow prev " onClick={onClick}>
       <AiOutlineLeft className='text-xl p-1 md:text-4xl border-2 md:p-2 rounded-full bg-white' />
@@ -47,7 +43,7 @@ export default function Home() {
   }
   useEffect(() => {
     fetchBestSellingProducts();
-  }, [session])
+  }, [])
 
   const scrollLeft = () => {
     const viewportWidth = window.innerWidth;
