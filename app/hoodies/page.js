@@ -26,7 +26,7 @@ export default async function Hoodies() {
                       <p className=" flex gap-1 items-center justify-center">
                         {hoodies[hoodie].color.map(eachColor => {
 
-                          return (<span className='h-4 w-4 rounded-full border-black' style={{ backgroundColor: ` ${eachColor}` }}> </span>)
+                          return (<span key={eachColor} className='h-4 w-4 rounded-full border-black' style={{ backgroundColor: ` ${eachColor}` }}> </span>)
                         })}</p>
                     </div>
 

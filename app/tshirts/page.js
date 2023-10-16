@@ -26,7 +26,7 @@ export default async function Tshirts() {
                         <div className='flex flex-col mt-3 justify-center'>
                           <p className=" flex gap-1 items-center justify-center">
                             {tshirts[tshirt].color.map(eachColor => {
-                              return (<span className='h-4 w-4 rounded-full border-black' style={{ backgroundColor: ` ${eachColor}` }}> </span>)
+                              return (<span key={eachColor} className='h-4 w-4 rounded-full border-black' style={{ backgroundColor: ` ${eachColor}` }}> </span>)
                             })}</p>
                         </div>
                         <p className="mt-1 font-semibold">₹ {tshirts[tshirt].price}</p>

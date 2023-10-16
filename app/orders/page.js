@@ -62,7 +62,7 @@ export default function Orders() {
                             year: "numeric", month: "long"
                         })
                         return (
-                            <Link data-aos="fade-up" href={`/order?orderid=${orderId}`} className='w-full md:w-[60vw] mx-auto flex flex-col shadow-lg border-2  p-2 rounded-md'>
+                            <Link data-aos="fade-up" key={orderId} href={`/order?orderid=${orderId}`} className='w-full md:w-[60vw] mx-auto flex flex-col shadow-lg border-2  p-2 rounded-md'>
                                 <div className='border-b-2 mb-2'>
                                     <div className='grid grid-cols-4 gap-6'>
                                         <p className='font-semibold'>Order ID</p>
