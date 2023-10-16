@@ -44,14 +44,16 @@ export default function Slug({ params }) {
       // }
       // else {
 
-        let parsedData = await data.json()
-      
+      let parsedData = await data.json()
+      if (parsedData.singleProduct) {
         setColorSizeSlug(parsedData.colorSizeSlug)
         setSingleProduct(parsedData.singleProduct)
 
         setAllSizes(singleProduct.size)
         setAllColors(singleProduct.color)
         setCategory(singleProduct.category)
+      }
+
       // }
 
     }
