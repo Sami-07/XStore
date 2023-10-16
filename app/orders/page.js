@@ -5,7 +5,7 @@ import { redirect } from "next/navigation"
 import Link from 'next/link';
 import CustomLoader from '../../components/CustomLoader';
 export default function page() {
-    const session = useSession();
+   
     const [loading, setIsLoading] = useState(false);
     const [allOrders, setAllOrders] = useState([])
     function handleClick(orderId) {
