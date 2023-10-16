@@ -101,7 +101,7 @@ export default function SubLayout({ children }) {
         catch (err) {
             localStorage.clear()
         }
-    }, [userName, city, pincode])
+    }, [status])
 
     function updateSubTotal(myCart) {
         let subt = 0;
