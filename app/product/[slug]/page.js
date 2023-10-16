@@ -12,9 +12,7 @@ export default function Slug({ params }) {
   const router = useRouter()
 
   const slug = params.slug
-  useEffect(() => {
-    router.push(`/product/${params.slug}`);
-  }, [params.slug]);
+
   const { addtoCart, buyNow, notifySuccess, notifyFailure } = useCartContext();
   const [pin, setPin] = useState("")
   const [service, setService] = useState()
@@ -45,7 +43,9 @@ export default function Slug({ params }) {
         router.push("/productnotfound")
       }
       else {
+
         let parsedData = await data.json()
+      
         setColorSizeSlug(parsedData.colorSizeSlug)
         setSingleProduct(parsedData.singleProduct)
 
