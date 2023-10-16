@@ -100,7 +100,7 @@ export default function Home() {
                   <BsArrowBarRight className='absolute top-5 right-5 text-xl md:text-3xl md:right-10' />
                   <button className='hidden md:block p-1 text-xl  h-10 border-gray-500 border-2 rounded-full md:p-2 z-10 bg-slate-100 absolute top-1/2 left-0 ' onClick={scrollLeft}><AiOutlineLeft /></button>
                   <button className='hidden md:block p-1 text-xl  h-10 border-gray-500 rounded-full border-2 md:p-2 z-10 bg-slate-100 absolute top-1/2 right-0 md:right-4' onClick={scrollRight}><AiOutlineRight /></button>
-                  {products && products.map(product => {
+                  { products.map(product => {
                     return (
                       <Link key={product.slug} className="px-2 py-4 md:p-4 w-[40vw] md:w-[25vw] lg:w-[22vw] mx-auto relative shadow-xl border-2 duration-500 hover:scale-105 hover:border-purple-400 rounded-lg snap-start" href={`/product/${product.slug}`}>
                         <div >
