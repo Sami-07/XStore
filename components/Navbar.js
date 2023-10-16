@@ -58,7 +58,7 @@ export default function Navbar() {
         if (session.status === "authenticated") {
             fetchUserName();
         }
-    }, [session.status])
+    }, [session.status, loggedInWithGoogle, name])
     const ref = useRef()
     function toggleHamburger() {
         setFilterClicked(false)
