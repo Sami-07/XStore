@@ -66,7 +66,7 @@ export default function Home() {
     <main className='mt-32 md:mt-20 min-h-screen'>
       {!products.length > 0 && <CustomLoader />}
       <div>
-        {products.length > 0 && <Carousel
+        <Carousel
           renderArrowPrev={(clickHandler, hasPrev, label) =>
             hasPrev && (
               <div className="absolute left-2 md:left-5  top-1/2 z-10 ">
@@ -86,11 +86,10 @@ export default function Home() {
           <img src={`/images/carousel/2.png`} alt="img" className="" />
           <img src={`/images/carousel/3.png`} alt="img" className="" />
           <img src={`/images/carousel/4.png`} alt="img" className="" />
-        </Carousel>}
+        </Carousel>
         <div className=''  data-aos="fade-up">
           <ProductSlider category={"ebooks"} topHead={"E Books at X Store"} />
         </div>
-        {products.length > 0 &&
           <div  data-aos="fade-up" >
             <div className=' mt-10 border-2 relative'>
               <h1 className='text-2xl pt-5 text-center font-semibold my-font-gradient'>
@@ -125,7 +124,7 @@ export default function Home() {
             <div  data-aos="fade-up">
               <ProductSlider category={"Hoodies"} topHead={"Trending Designer Hoodies"} />
             </div>
-          </div>}
+          </div>
       </div>
     </main>
   );
