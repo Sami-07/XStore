@@ -10,7 +10,7 @@ export async function GET(req, res) {
             connectDB()
             let slug = req.nextUrl.searchParams.get("query")
             let singleProduct = await Product.findOne({ slug: slug })
-
+           
             if (singleProduct == null) {
                 return new NextResponse(JSON.stringify(), { status: 404 })
             }
@@ -25,7 +25,7 @@ export async function GET(req, res) {
                     colorSizeSlug[item.color][item.size] = { slug: item.slug }
                 }
             }
-        
+
             return new NextResponse(JSON.stringify({ singleProduct: singleProduct, colorSizeSlug: colorSizeSlug }))
         }
         else {
