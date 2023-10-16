@@ -47,7 +47,7 @@ export default function Home() {
   }
   useEffect(() => {
     fetchBestSellingProducts();
-  }, [products])
+  }, [session])
 
   const scrollLeft = () => {
     const viewportWidth = window.innerWidth;
@@ -64,7 +64,7 @@ export default function Home() {
   };
   return (
     <main className='mt-32 md:mt-20 min-h-screen'>
-      {!products.length > 0 && <CustomLoader />}
+      {/* {products.length === 0 && <CustomLoader />} */}
       <div>
         <Carousel
           renderArrowPrev={(clickHandler, hasPrev, label) =>
