@@ -38,15 +38,19 @@ export default function Slug({ params }) {
     async function fetching() {
       let data = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/fetchproductsvariants?query=${slug}`)
       if (data.status == 404) {
-        window.location.href = "/productnotfound"
+        // window.location.href = "/productnotfound"
+        router.push("/productnotfound")
       }
-      let parsedData = await data.json()
-      setColorSizeSlug(parsedData.colorSizeSlug)
-      setSingleProduct(parsedData.singleProduct)
-
-      setAllSizes(singleProduct.size)
-      setAllColors(singleProduct.color)
-      setCategory(singleProduct.category)
+      else{
+        let parsedData = await data.json()
+        setColorSizeSlug(parsedData.colorSizeSlug)
+        setSingleProduct(parsedData.singleProduct)
+  
+        setAllSizes(singleProduct.size)
+        setAllColors(singleProduct.color)
+        setCategory(singleProduct.category)
+      }
+    
     }
     fetching();
   }, [selectedColor, selectedSize])
