@@ -45,6 +45,7 @@ export default function Slug({ params }) {
       // else {
 
       let parsedData = await data.json()
+      console.log(parsedData)
       if (parsedData.singleProduct) {
         setColorSizeSlug(parsedData.colorSizeSlug)
         setSingleProduct(parsedData.singleProduct)
