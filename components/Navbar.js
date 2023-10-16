@@ -49,7 +49,7 @@ export default function Navbar() {
             }
         }
         fetchUserName();
-    }, [session])
+    }, [session.status])
     const ref = useRef()
     function toggleHamburger() {
         setFilterClicked(false)

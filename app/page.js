@@ -14,7 +14,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 // ..
 export default function Home() {
-  const session = useSession();
+
   const [products, setProducts] = useState([])
   const containerRef = useRef(null);
   useEffect(() => {
@@ -23,7 +23,12 @@ export default function Home() {
       once: false
     })
   }, [])
- 
+  const { data: session } = useSession({
+    required: true,
+    onUnauthenticated() {
+      redirect('/login')
+    }
+  })
   const CustomArrowPrev = ({ onClick }) => (
     <button className="custom-arrow prev " onClick={onClick}>
       <AiOutlineLeft className='text-xl p-1 md:text-4xl border-2 md:p-2 rounded-full bg-white' />
@@ -83,44 +88,44 @@ export default function Home() {
           <img src={`/images/carousel/3.png`} alt="img" className="" />
           <img src={`/images/carousel/4.png`} alt="img" className="" />
         </Carousel>
-        <div className=''  data-aos="fade-up">
+        <div className='' data-aos="fade-up">
           <ProductSlider category={"ebooks"} topHead={"E Books at X Store"} />
         </div>
-          <div  data-aos="fade-up" >
-            <div className=' mt-10 border-2 relative'>
-              <h1 className='text-2xl pt-5 text-center font-semibold my-font-gradient'>
-                Best Sellers
-              </h1>
-              <div className=''>
-                <div ref={containerRef} className='grid auto-cols-auto gap-3 grid-flow-col overflow-x-auto snaps-inline py-4  pt-3'>
-                  <BsArrowBarRight className='absolute top-5 right-5 text-xl md:text-3xl md:right-10' />
-                  <button className='hidden md:block p-1 text-xl  h-10 border-gray-500 border-2 rounded-full md:p-2 z-10 bg-slate-100 absolute top-1/2 left-0 ' onClick={scrollLeft}><AiOutlineLeft /></button>
-                  <button className='hidden md:block p-1 text-xl  h-10 border-gray-500 rounded-full border-2 md:p-2 z-10 bg-slate-100 absolute top-1/2 right-0 md:right-4' onClick={scrollRight}><AiOutlineRight /></button>
-                  { products.map(product => {
-                    return (
-                      <Link key={product.slug} className="px-2 py-4 md:p-4 w-[40vw] md:w-[25vw] lg:w-[22vw] mx-auto relative shadow-xl border-2 duration-500 hover:scale-105 hover:border-purple-400 rounded-lg snap-start" href={`/product/${product.slug}`}>
-                        <div >
-                          <img src='/images/top seller.png' className='w-10 md:w-14 absolute top-2' />
-                          <img alt="ecommerce" className="h-[17vh] md:h-[20vh] lg:h-[30vh] p-2 mx-auto" src={product.img} />
-                          <div className="mt-1 text-center">
-                            <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">{product.category}</h3>
-                            <h2 className="text-gray-900  title-font text-xs md:text-sm font-medium">{product.title.substring(0, 20)}...</h2>
-                            <p className="mt-1 font-semibold">₹ {product.price}</p>
-                          </div>
+        <div data-aos="fade-up" >
+          <div className=' mt-10 border-2 relative'>
+            <h1 className='text-2xl pt-5 text-center font-semibold my-font-gradient'>
+              Best Sellers
+            </h1>
+            <div className=''>
+              <div ref={containerRef} className='grid auto-cols-auto gap-3 grid-flow-col overflow-x-auto snaps-inline py-4  pt-3'>
+                <BsArrowBarRight className='absolute top-5 right-5 text-xl md:text-3xl md:right-10' />
+                <button className='hidden md:block p-1 text-xl  h-10 border-gray-500 border-2 rounded-full md:p-2 z-10 bg-slate-100 absolute top-1/2 left-0 ' onClick={scrollLeft}><AiOutlineLeft /></button>
+                <button className='hidden md:block p-1 text-xl  h-10 border-gray-500 rounded-full border-2 md:p-2 z-10 bg-slate-100 absolute top-1/2 right-0 md:right-4' onClick={scrollRight}><AiOutlineRight /></button>
+                {products.map(product => {
+                  return (
+                    <Link key={product.slug} className="px-2 py-4 md:p-4 w-[40vw] md:w-[25vw] lg:w-[22vw] mx-auto relative shadow-xl border-2 duration-500 hover:scale-105 hover:border-purple-400 rounded-lg snap-start" href={`/product/${product.slug}`}>
+                      <div >
+                        <img src='/images/top seller.png' className='w-10 md:w-14 absolute top-2' />
+                        <img alt="ecommerce" className="h-[17vh] md:h-[20vh] lg:h-[30vh] p-2 mx-auto" src={product.img} />
+                        <div className="mt-1 text-center">
+                          <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">{product.category}</h3>
+                          <h2 className="text-gray-900  title-font text-xs md:text-sm font-medium">{product.title.substring(0, 20)}...</h2>
+                          <p className="mt-1 font-semibold">₹ {product.price}</p>
                         </div>
-                      </Link>
-                    )
-                  })}
-                </div>
+                      </div>
+                    </Link>
+                  )
+                })}
               </div>
             </div>
-            <div className=''  data-aos="fade-up">
-              <ProductSlider category={"Tshirts"} topHead={"Designer Tshirts at Xstore"} />
-            </div>
-            <div  data-aos="fade-up">
-              <ProductSlider category={"Hoodies"} topHead={"Trending Designer Hoodies"} />
-            </div>
           </div>
+          <div className='' data-aos="fade-up">
+            <ProductSlider category={"Tshirts"} topHead={"Designer Tshirts at Xstore"} />
+          </div>
+          <div data-aos="fade-up">
+            <ProductSlider category={"Hoodies"} topHead={"Trending Designer Hoodies"} />
+          </div>
+        </div>
       </div>
     </main>
   );
