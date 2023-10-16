@@ -38,11 +38,11 @@ export default function Slug({ params }) {
   useEffect(() => {
     async function fetching() {
       let data = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/fetchproductsvariants?query=${slug}`)
-      if (data.status == 404) {
-        // window.location.href = "/productnotfound"
-        router.push("/productnotfound")
-      }
-      else {
+      // if (data.status == 404) {
+      //   // window.location.href = "/productnotfound"
+      //   router.push("/productnotfound")
+      // }
+      // else {
 
         let parsedData = await data.json()
       
@@ -52,7 +52,7 @@ export default function Slug({ params }) {
         setAllSizes(singleProduct.size)
         setAllColors(singleProduct.color)
         setCategory(singleProduct.category)
-      }
+      // }
 
     }
     fetching();
