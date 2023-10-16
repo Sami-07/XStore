@@ -10,6 +10,7 @@ import { PiBooksLight } from "react-icons/pi"
 import { LiaTshirtSolid } from "react-icons/lia"
 import { PiHoodieLight } from "react-icons/pi"
 import { TbHelpSquareRounded } from "react-icons/tb"
+import { useMemo } from 'react'
 import { FiLogOut } from "react-icons/fi"
 import { RxHamburgerMenu } from "react-icons/rx"
 import { FiLogIn } from "react-icons/fi"
@@ -44,21 +45,22 @@ export default function Navbar() {
     useEffect(() => {
 
     }, [pathname])
-    useEffect(() => {
-        async function fetchUserName() {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getUserFromSession`)
+    const fetchUserName = useMemo(() => {
+        return async () => {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getUserFromSession`);
             const response = await res.json();
-            setName(response.name)
+            setName(response.name);
             if (response.imgUrl) {
                 setLoggedInWithGoogle(true);
-                setImgUrl(response.imgUrl)
-
+                setImgUrl(response.imgUrl);
             }
-        }
+        };
+    }, [session.status]);
+    useEffect(() => {
         if (session.status === "authenticated") {
             fetchUserName();
         }
-    }, [session.status, loggedInWithGoogle, name])
+    }, [session.status]);
     const ref = useRef()
     function toggleHamburger() {
         setFilterClicked(false)
