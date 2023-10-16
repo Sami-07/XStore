@@ -41,7 +41,7 @@ export default async function Tshirts() {
     </div>
   )
 }
-export async function getTshirts() {
+async function getTshirts() {
   connectDB()
   let allTshirts = await Product.find({ category: "Tshirts" })
   let tshirts = {}

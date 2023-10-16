@@ -39,7 +39,7 @@ export default async function Ebooks() {
         </div>
     )
 }
-export async function getBooks() {
+async function getBooks() {
     connectDB()
     let allBooks = await Product.find({ category: "ebooks" })
 
