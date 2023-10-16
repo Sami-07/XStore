@@ -9,9 +9,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import CustomLoader from '../../../components/CustomLoader';
 export default function Slug({ params }) {
   const session = useSession();
+  const router = useRouter()
 
   const slug = params.slug
-  const router = useRouter()
+  useEffect(() => {
+    router.push(`/product/${params.slug}`);
+  }, [params.slug]);
   const { addtoCart, buyNow, notifySuccess, notifyFailure } = useCartContext();
   const [pin, setPin] = useState("")
   const [service, setService] = useState()
@@ -41,22 +44,22 @@ export default function Slug({ params }) {
         // window.location.href = "/productnotfound"
         router.push("/productnotfound")
       }
-      else{
+      else {
         let parsedData = await data.json()
         setColorSizeSlug(parsedData.colorSizeSlug)
         setSingleProduct(parsedData.singleProduct)
-  
+
         setAllSizes(singleProduct.size)
         setAllColors(singleProduct.color)
         setCategory(singleProduct.category)
       }
-    
+
     }
     fetching();
-  }, [selectedColor, selectedSize,singleProduct])
+  }, [selectedColor, selectedSize, singleProduct])
   function redirectUrl(selectedSize, selectedColor) {
     let newUrl = `${process.env.NEXT_PUBLIC_HOST}/product/${colorSizeSlug[selectedColor][selectedSize]["slug"]}`
-   window.location.href = newUrl;
+    router.push(newUrl)
   }
   return (
     <div>
