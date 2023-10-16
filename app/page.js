@@ -47,7 +47,7 @@ export default function Home() {
   }
   useEffect(() => {
     fetchBestSellingProducts();
-  }, [session])
+  }, [])
 
   const scrollLeft = () => {
     const viewportWidth = window.innerWidth;
