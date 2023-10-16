@@ -56,7 +56,7 @@ export default function Slug({ params }) {
   }, [selectedColor, selectedSize,singleProduct,  router])
   function redirectUrl(selectedSize, selectedColor) {
     let newUrl = `${process.env.NEXT_PUBLIC_HOST}/product/${colorSizeSlug[selectedColor][selectedSize]["slug"]}`
-    router.push(newUrl)
+   window.location.href = newUrl;
   }
   return (
     <div>
