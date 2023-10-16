@@ -83,7 +83,7 @@ export default function Navbar() {
     return (
         <div>
             <div className=' open-font '>
-              { name && <nav ref={ref} className=' flex w-[60vw] md:w-[28vw] lg:w-[22vw] h-screen top-0 fixed  transform transition-transform translate-x-0 z-50' style={{ backgroundColor: "#793FDF" }}>
+                {name && <nav ref={ref} className=' flex w-[60vw] md:w-[28vw] lg:w-[22vw] h-screen top-0 fixed  transform transition-transform translate-x-0 z-50' style={{ backgroundColor: "#793FDF" }}>
                     <Link href={"/"}> <Image src="/images/transparent X logo.png" className='absolute w-8 md:w-10 md:h-10 p-2 left-6 top-6 md:top-4 rounded bg-black' width={100} height={100} alt='X Logo' /></Link>
                     <Link href={"/myaccount"} className='cursor-pointer absolute left-5 top-24 flex justify-center items-center gap-4'>
                         {loggedInWithGoogle && <img src={imgUrl} className='w-10 rounded-sm h-10' />}

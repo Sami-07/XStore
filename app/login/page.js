@@ -31,8 +31,8 @@ const router = useRouter();
     }
     if (session.status === "authenticated") {
       createUserFromGoogle()
-      // router.push("/")
-      window.location.href = "/"
+      router.push("/")
+      // window.location.href = "/"
     }
   }, [session.status])
 
