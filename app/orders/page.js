@@ -4,7 +4,7 @@ import { useSession } from "next-auth/react"
 import { redirect } from "next/navigation"
 import Link from 'next/link';
 import CustomLoader from '../../components/CustomLoader';
-export default function page() {
+export default function Orders() {
    
     const [loading, setIsLoading] = useState(false);
     const [allOrders, setAllOrders] = useState([])
