@@ -36,7 +36,7 @@ export async function GET(req, res) {
     }
 
     catch (error) {
-        if (error instanceof NotFoundError) {
+        if (error) {
             notFound()
         }
         else {
