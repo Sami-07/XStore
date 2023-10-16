@@ -53,7 +53,7 @@ export default function Slug({ params }) {
     
     }
     fetching();
-  }, [selectedColor, selectedSize,singleProduct,  router])
+  }, [selectedColor, selectedSize,singleProduct])
   function redirectUrl(selectedSize, selectedColor) {
     let newUrl = `${process.env.NEXT_PUBLIC_HOST}/product/${colorSizeSlug[selectedColor][selectedSize]["slug"]}`
    window.location.href = newUrl;
