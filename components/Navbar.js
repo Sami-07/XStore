@@ -35,6 +35,13 @@ export default function Navbar() {
         setIsLoading(false)
     }, [])
     useEffect(() => {
+        setIsLoading(true)
+        if (session.status === "authenticated") {
+
+        }
+        setIsLoading(false)
+    }, [])
+    useEffect(() => {
 
     }, [pathname])
     useEffect(() => {
@@ -48,7 +55,9 @@ export default function Navbar() {
 
             }
         }
-        fetchUserName();
+        if (session.status === "authenticated") {
+            fetchUserName();
+        }
     }, [session.status])
     const ref = useRef()
     function toggleHamburger() {
@@ -136,7 +145,7 @@ export default function Navbar() {
                         <Link href="/contact" onClick={toggleHamburger} className={pathname === "/contact" ? "bg-blue-500   p-1 rounded-md flex items-center gap-6 " : "flex items-center gap-6"}> <TbHelpSquareRounded className='text-2xl' /></Link>
                         {session.status === "authenticated" && <div onClick={() => {
                             signOut()
-                           router.push("/login")
+                            router.push("/login")
                         }
                         } className='flex items-center  gap-6'> <FiLogOut className='rotate-180 text-2xl' /></div>}
                         {session.status === "unauthenticated" && <Link href="/login" onClick={toggleHamburger} className='flex items-center  gap-6'> <FiLogIn /> </Link>}
