@@ -93,7 +93,7 @@ export default function Slug({ params }) {
                 <h1 className="text-gray-900 text-lg title-font font-medium mb-1 ml-4 md:ml-0" data-aos="fade-up">{singleProduct.title} {singleProduct.size}  {singleProduct.color}</h1>
                 {(singleProduct.category === "Tshirts" || singleProduct.category === "Hoodies") &&
                   <div>
-                    <p data-aos="fade-up" className='mt-4'>Please select a color</p>
+                    <p data-aos="fade-up" className='mt-4'>Please select a color & size</p>
                     <div className="flex mt-2 items-center pb-5 gap-5 border-b-2 border-gray-100 mb-5">
                       <div className="flex">
                         <span className="mr-3" data-aos="fade-up">Color</span>
