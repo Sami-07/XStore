@@ -16,6 +16,6 @@ export async function GET(req, res) {
     }
 
     catch (err) {
-        return new NextResponse(JSON.stringify({ msg: "error" }))
+        return new NextResponse(JSON.stringify({ msg: err.message }))
     }
 }
