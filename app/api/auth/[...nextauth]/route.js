@@ -5,7 +5,7 @@ import User from "../../../../models/User"
 import { NextResponse } from "next/server";
 import CredentialsProvider from "next-auth/providers/credentials";
 import CryptoJS from "crypto-js";
-export const dynamic = "force-dynamic"
+
 var jwt = require('jsonwebtoken');
 const handler = NextAuth({
     providers: [
