@@ -3,6 +3,7 @@ import connectDB from "../../../middleware/mongoose";
 import User from "../../../models/User";
 import { getServerSession } from "next-auth";
 import Order from "../../../models/Order";
+export const dynamic = "force-dynamic"
 export async function GET(req, res) {
     try {
         connectDB();

@@ -3,6 +3,7 @@ import connectDB from "../../../middleware/mongoose"
 import User from "../../../models/User";
 import { getServerSession } from "next-auth";
 import Product from "../../../models/Product"
+export const dynamic = "force-dynamic"
 export async function POST(req, res) {
     try {
         connectDB();
