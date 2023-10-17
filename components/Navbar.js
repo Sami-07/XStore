@@ -98,7 +98,7 @@ export default function Navbar() {
                         <Link href={"/"}>     <Image src="/images/transparent X logo.png" className='fixed top-3  z-40 mx-auto flex items-center  gap-6 w-7 h-7 p-2  rounded bg-black' width={100} height={100} alt='X logo' /> </Link>
                     </div>
                     <nav className=' md:hidden my-bg-color z-30 fixed top-0 w-screen h-12  flex justify-between items-center px-4 '>
-                        <RxHamburgerMenu onClick={openNavbar} className='text-white  cursor-pointer' />
+                        <RxHamburgerMenu onClick={openNavbar} className='text-white text-2xl cursor-pointer' />
                     </nav>
                 </div>
                 <nav className='hidden md:flex w-[20vw] md:w-[10vw] lg:w-[8vw] h-screen fixed top-0 transform transition-transform translate-x-0' style={{ backgroundColor: "#793FDF" }}>
