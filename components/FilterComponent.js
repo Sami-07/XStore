@@ -28,9 +28,9 @@ export default function FilterComponent({ setFilterClicked }) {
     const [clicked, setClicked] = useState(false);
     async function handleSubmit(e) {
         e.preventDefault();
-      
+
         setClicked(true);
-        console.log(category)
+
         if (!category) {
             toast.error("Please Select a Category", {
                 position: "top-center",
@@ -94,7 +94,7 @@ export default function FilterComponent({ setFilterClicked }) {
     }
     return (
         <div className='min-h-screen bg-white mt-32  md:mt-20 md: pb-10'>
-           <ToastContainer
+            <ToastContainer
                 position="top-center"
                 autoClose={5000}
                 hideProgressBar

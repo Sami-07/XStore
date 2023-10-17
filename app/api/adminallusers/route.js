@@ -1,8 +1,7 @@
-import { NextResponse } from "next/server";
-import connectDB from "../../../middleware/mongoose"
-import Product from "../../../models/Product"
-import User from "../../../models/User";
 import { getServerSession } from "next-auth";
+import connectDB from "../../../middleware/mongoose";
+import User from "../../../models/User";
+import { NextResponse } from "next/server";
 export const dynamic = "force-dynamic"
 export async function GET(req, res) {
     try {
@@ -11,14 +10,16 @@ export async function GET(req, res) {
         const userEmail = session.user.email;
         const DBuser = await User.findOne({ email: userEmail })
         if (DBuser.isAdmin === true) {
-            let products = await Product.find({})
-            return NextResponse.json({ ok: true, products })
+            const users = await User.find({});
+            return new NextResponse(JSON.stringify({ ok: true, users: users }));
+
         }
         else {
-            return NextResponse.json({ ok: false })
+            return new NextResponse(JSON.stringify({ ok: false }))
         }
     }
     catch (err) {
-        return NextResponse.json({ ok: false })
+        return new NextResponse(JSON.stringify({ ok: false, err: err.message }))
     }
+
 }
