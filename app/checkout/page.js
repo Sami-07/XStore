@@ -270,7 +270,7 @@ export default function Checkout() {
 
 
         </div>
-        {!initiated && <div className='flex mx-auto font-semibold mt-6  text-white my-bg-color border-0 py-2 px-3 focus:outline-none hover:bg-indigo-600 rounded text-lg w-full justify-center' onClick={() => setInitiated(true)}>₹ {amountToBePaid}</div>}
+        {!initiated && <div className='cursor-pointer flex mx-auto font-semibold mt-6  text-white my-bg-color border-0 py-2 px-3 focus:outline-none hover:bg-indigo-600 rounded text-lg w-full justify-center' onClick={() => setInitiated(true)}>₹ {amountToBePaid}</div>}
 
         {initiated && <div className=''>
           <div className='flex justify-evenly items-center gap-5 bg-amber-300 p-2 md:p-4 rounded-xl '>
