@@ -106,7 +106,7 @@ export default function Slug({ params }) {
                         </div>
                       </div>
                       <div className="flex ml-6 items-center">
-                        <span className="mr-3">Size</span>
+                        <span className="mr-3" data-aos="fade-up">Size</span>
                         <div className="relative">
                           {colorSizeSlug[selectedColor] && singleProduct && <select
                             onChange={(e) => {
