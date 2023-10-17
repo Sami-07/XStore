@@ -63,7 +63,7 @@ export default function MyAccount() {
         }
         getUserEmail()
 
-    }, [session.status])
+    }, [session])
     async function handleUpdate(e) {
         e.preventDefault()
 
@@ -184,7 +184,7 @@ export default function MyAccount() {
         <div>
 
             {!session && <CustomLoader />}
-            {session && <div className='relative top-10 mt-32 md:mt-20 min-h-screen'>
+            {name && <div className='relative top-10 mt-32 md:mt-20 min-h-screen'>
                 <ToastContainer
                     position="top-center"
                     autoClose={5000}

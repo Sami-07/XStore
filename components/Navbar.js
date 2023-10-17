@@ -48,7 +48,7 @@ export default function Navbar() {
 
         }
         fetchUserName();
-    }, [session.status]);
+    }, [session]);
 
     const ref = useRef()
     function toggleHamburger() {
