@@ -63,7 +63,7 @@ export default function MyAccount() {
         }
         getUserEmail()
 
-    }, [])
+    }, [session.status])
     async function handleUpdate(e) {
         e.preventDefault()
 

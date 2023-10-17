@@ -35,18 +35,9 @@ export default function Navbar() {
         }
         setIsLoading(false)
     }, [])
-    useEffect(() => {
-        setIsLoading(true)
-        if (session.status === "authenticated") {
 
-        }
-        setIsLoading(false)
-    }, [])
     useEffect(() => {
-
-    }, [pathname])
-    const fetchUserName = useMemo(() => {
-        return async () => {
+        async function fetchUserName() {
             const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getUserFromSession`);
             const response = await res.json();
             setName(response.name);
@@ -54,29 +45,16 @@ export default function Navbar() {
                 setLoggedInWithGoogle(true);
                 setImgUrl(response.imgUrl);
             }
-        };
-    }, [session.status]);
-    useEffect(() => {
-        if (session.status === "authenticated") {
-            fetchUserName();
+
         }
+        fetchUserName();
     }, [session.status]);
+
     const ref = useRef()
     function toggleHamburger() {
         setFilterClicked(false)
         ref.current.classList.remove("translate-x-0")
         ref.current.classList.add("-translate-x-full")
-    }
-
-    function toggleCart() {
-        if (ref.current.classList.contains("translate-x-full")) {
-            ref.current.classList.remove("translate-x-full")
-            ref.current.classList.add("translate-x-0")
-        }
-        else {
-            ref.current.classList.remove("translate-x-0")
-            ref.current.classList.add("translate-x-full")
-        }
     }
     function openNavbar() {
         ref.current.classList.remove("-translate-x-full")
@@ -85,7 +63,7 @@ export default function Navbar() {
     return (
         <div>
             <div className=' open-font '>
-                {session && <nav ref={ref} className=' flex w-[60vw] md:w-[28vw] lg:w-[22vw] h-screen top-0 fixed  transform transition-transform translate-x-0 z-50' style={{ backgroundColor: "#793FDF" }}>
+                {session ? <nav ref={ref} className=' flex w-[60vw] md:w-[28vw] lg:w-[22vw] h-screen top-0 fixed  transform transition-transform translate-x-0 z-50' style={{ backgroundColor: "#793FDF" }}>
                     <Link href={"/"}> <Image src="/images/transparent X logo.png" className='absolute w-8 md:w-10 md:h-10 p-2 left-6 top-6 md:top-4 rounded bg-black' width={100} height={100} alt='X Logo' /></Link>
                     <Link href={"/myaccount"} className='cursor-pointer absolute left-5 top-24 flex justify-center items-center gap-4'>
                         {loggedInWithGoogle && <img src={imgUrl} className='w-10 rounded-sm h-10' />}
@@ -114,7 +92,7 @@ export default function Navbar() {
                         }} className="flex items-center  gap-4"> <FiLogOut className='rotate-180' />Logout</div>}
                         {session.status === "unauthenticated" && <Link href="/login" onClick={toggleHamburger} className="flex items-center  gap-4"> <FiLogIn />Login</Link>}
                     </div>
-                </nav>}
+                </nav> : ""}
                 <div className='mb-20 md:mb-0 z-40'>
                     <div className='flex justify-center md:hidden'>
                         <Link href={"/"}>     <Image src="/images/transparent X logo.png" className='fixed top-3  z-40 mx-auto flex items-center  gap-6 w-7 h-7 p-2  rounded bg-black' width={100} height={100} alt='X logo' /> </Link>
