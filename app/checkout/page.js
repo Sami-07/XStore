@@ -275,7 +275,7 @@ export default function Checkout() {
         {initiated && <div className=''>
           <div className='flex justify-evenly items-center gap-5 bg-amber-300 p-2 md:p-4 rounded-xl '>
             <AiOutlineInfoCircle className='text-4xl' />
-            <p className='w-2/3 text-sm md:text-base'>This is a Dummy Payment Gateway. So, to place an order, you have to do a dummy transaction by entering your UPI ID. You will not be debited as this is just for demonstration.</p>
+            <p className='w-2/3 text-sm md:text-base'>Dont choose any UPI app to pay. Complete the payment by entering your UPI ID and proceed. This is a Dummy Payment Gateway. So you wont be debited any amount.</p>
           </div>
           {!processing && <button onClick={handlePay} className="flex mx-auto font-semibold mt-6  text-white my-bg-color border-0 py-2 px-3 focus:outline-none hover:bg-indigo-600 rounded text-lg w-full justify-center">Pay  ₹ {amountToBePaid} </button>}
           {processing && <button disabled className="flex mx-auto mt-10  w-full justify-center">
