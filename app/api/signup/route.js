@@ -2,7 +2,7 @@ import User from "models/User"
 import connectDB from "../../../middleware/mongoose"
 import { NextResponse } from "next/server"
 import CryptoJS from "crypto-js"
-
+export const dynamic = "force-dynamic"
 export async function POST(req, res) {
 
     try {
