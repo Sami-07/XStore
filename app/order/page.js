@@ -104,9 +104,9 @@ export default function MyOrder() {
               {(deliveryStatus === "Cancelled") && <h1 className="text-gray-800 text-xl text-center title-font font-semibold mb-4" data-aos="fade-up">Your Order has been  Cancelled</h1>}
               <img alt="ecommerce" className="lg:w-1/2 block md:hidden w-full mb-5 lg:h-auto h-64 object-cover object-center rounded" src="/images/thanksforordering.png" />
               <div className="flex " data-aos="fade-up">
-                <a className="w-[70vw] text text-md font-semibold">Item Name</a>
-                <a className="text-right w-[15vw] text-md font-semibold">Quantity</a>
-                <a className="text-right w-[15vw] text-md font-semibold" >Price</a>
+                <a className="w-[70vw] text text-xs font-semibold">Item Name</a>
+                <a className="text-right w-[15vw] text-xs font-semibold">Quantity</a>
+                <a className="text-right w-[15vw] text-xs font-semibold" >Price</a>
               </div>
               {allProducts && Object.keys(allProducts).map((itemSlug) => {
                 return (
