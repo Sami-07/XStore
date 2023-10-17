@@ -3,6 +3,7 @@ import connectDB from '../../../middleware/mongoose';
 import { NextResponse } from 'next/server';
 import { notFound } from "next/navigation"
 import { getServerSession } from 'next-auth';
+export const dynamic = "force-dynamic"
 export async function GET(req, res) {
     try {
         const session = await getServerSession();
