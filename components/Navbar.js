@@ -89,7 +89,7 @@ export default function Navbar() {
                         {session.status === "authenticated" && <div onClick={() => {
                             signOut()
                             router.push("/login")
-                        }} className="flex items-center  gap-4"> <FiLogOut className='rotate-180' />Logout</div>}
+                        }} className="flex items-center  gap-4 cursor-pointer"> <FiLogOut className='rotate-180' />Logout</div>}
                         {session.status === "unauthenticated" && <Link href="/login" onClick={toggleHamburger} className="flex items-center  gap-4"> <FiLogIn />Login</Link>}
                     </div>
                 </nav> : ""}
@@ -127,7 +127,7 @@ export default function Navbar() {
                             signOut()
                             router.push("/login")
                         }
-                        } className='flex items-center  gap-6'> <FiLogOut className='rotate-180 text-2xl' /></div>}
+                        } className='flex items-center  gap-6 cursor-pointer'> <FiLogOut className='rotate-180 text-2xl' /></div>}
                         {session.status === "unauthenticated" && <Link href="/login" onClick={toggleHamburger} className='flex items-center  gap-6'> <FiLogIn /> </Link>}
                     </div>
                 </nav>
