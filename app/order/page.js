@@ -23,7 +23,7 @@ export default function MyOrder() {
       })
       const FetchedOrder = await res.json();
       setDeliveryStatus(FetchedOrder["order"]["deliveryStatus"]);
-   
+
       setAllProducts(FetchedOrder["order"]["products"])
       setTotal(FetchedOrder["order"]["amount"])
     }
@@ -100,7 +100,8 @@ export default function MyOrder() {
           <div className=" px-5 mx-auto flex flex-wrap">
             <div className="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
               <h2 className="text-sm title-font text-gray-500 tracking-widest text-center" data-aos="fade-up">X Store</h2>
-              <h1 className="text-gray-800 text-xl text-center title-font font-semibold mb-4" data-aos="fade-up">Your Order has been placed Successfully!</h1>
+              {(deliveryStatus !== "Cancelled") && <h1 className="text-gray-800 text-xl text-center title-font font-semibold mb-4" data-aos="fade-up">Your Order has been placed Successfully!</h1>}
+              {(deliveryStatus === "Cancelled") && <h1 className="text-gray-800 text-xl text-center title-font font-semibold mb-4" data-aos="fade-up">Your Order has been  Cancelled</h1>}
               <img alt="ecommerce" className="lg:w-1/2 block md:hidden w-full mb-5 lg:h-auto h-64 object-cover object-center rounded" src="/images/thanksforordering.png" />
               <div className="flex " data-aos="fade-up">
                 <a className="w-[70vw] text text-md font-semibold">Item Name</a>
@@ -112,9 +113,13 @@ export default function MyOrder() {
                   <div key={itemSlug} className="flex justify-between mt-2 mb-2">
                     <div className="text-gray-500 w-[50vw] text-xs md:text-sm flex justify-start gap-4">
                       <img src={allProducts[itemSlug]["img"]} className='w-10 rounded-md' />
-                      <p className="w-40">{allProducts[itemSlug]["name"].substring(0, 40)}...</p>
+                      <div >
+
+                        <p className="w-40">{allProducts[itemSlug]["name"].substring(0, 40)}...</p>
+                        {allProducts[itemSlug]["category"] === "ebooks" && <button onClick={() => redirectToDownloadBook(itemSlug)} className="flex  text-white justify-center items-center bg-indigo-500 border-0 px-4 h-8 focus:outline-none hover:bg-indigo-600 rounded text-xs">Download</button>
+                        }                      </div>
                     </div>
-                    {allProducts[itemSlug]["category"] === "ebooks" && <button onClick={() => redirectToDownloadBook(itemSlug)} className="flex  text-white justify-center items-center bg-indigo-500 border-0 px-4 h-8 focus:outline-none hover:bg-indigo-600 rounded text-xs">Download</button>}
+
                     <span className=" text-gray-900 text-right w-[15vw]">{allProducts[itemSlug]["qty"]}</span>
                     <span className=" text-gray-900 text-right w-[15vw]">₹{allProducts[itemSlug]["price"]}</span>
                   </div>
@@ -134,15 +139,15 @@ export default function MyOrder() {
           </div>
 
           {(deliveryStatus !== "Cancelled") && <div>
-            {!openPopUp && <div> <button data-aos="fade-up" onClick={() => {
+            {!openPopUp && <div> <button onClick={() => {
               setOpenPopUp(!openPopUp)
-            }} className="flex ml-3 border-purple-600 text-black py-2 px-4 focus:outline-none hover:bg-purple-500 hover:text-white transition ease-in-out border-2 rounded justify-center w-1/3">Cancel Order</button> </div>
+            }} className="flex ml-3 border-purple-600 text-black py-2 px-4 focus:outline-none hover:bg-purple-500 hover:text-white transition ease-in-out border-2 rounded justify-center  md:w-1/3">Cancel Order</button> </div>
             }
             {openPopUp && <div className="flex flex-col  justify-center items-start gap-4">   <p>Please Confirm your order Cancellation</p>
-              <button data-aos="fade-up" onClick={cancelOrder} className="flex ml-3 border-purple-600 text-black py-2 px-4 focus:outline-none hover:bg-purple-500 hover:text-white transition ease-in-out border-2 rounded justify-center w-1/3">Confirm</button>
+              <button data-aos="fade-up" onClick={cancelOrder} className="flex ml-3 border-purple-600 text-black py-2 px-4 focus:outline-none hover:bg-purple-500 hover:text-white transition ease-in-out border-2 rounded justify-center md:w-1/3">Confirm</button>
               <button data-aos="fade-up" onClick={() => {
                 setOpenPopUp(!openPopUp)
-              }} className="flex ml-3 border-purple-600 text-white py-2 px-4 focus:outline-none my-bg-color hover:text-white transition ease-in-out border-2 rounded justify-center w-1/3">Go Back</button> </div>}
+              }} className="flex ml-3 border-purple-600 text-white py-2 px-4 focus:outline-none my-bg-color hover:text-white transition ease-in-out border-2 rounded justify-center md:w-1/3">Go Back</button> </div>}
           </div>
           }
 
