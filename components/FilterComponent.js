@@ -3,6 +3,7 @@ import { useState } from 'react'
 import Select from 'react-select';
 import FilteredResultsComponent from './FilteredResultsComponent';
 import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 export default function FilterComponent({ setFilterClicked }) {
 
     const categories = [
@@ -29,7 +30,8 @@ export default function FilterComponent({ setFilterClicked }) {
         e.preventDefault();
       
         setClicked(true);
-        if (category.length === 0) {
+        console.log(category)
+        if (!category) {
             toast.error("Please Select a Category", {
                 position: "top-center",
                 autoClose: 2000,
@@ -92,6 +94,18 @@ export default function FilterComponent({ setFilterClicked }) {
     }
     return (
         <div className='min-h-screen bg-white mt-32  md:mt-20 md: pb-10'>
+           <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
             <div className='w-full'>
                 <form className='mt-8 pt-10' onSubmit={handleSubmit}>
                     <div className='ml-10 '>
