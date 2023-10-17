@@ -8,7 +8,7 @@ export async function GET(req, res) {
         const session = await getServerSession();
         if (session) {
             connectDB()
-            let slug = req.nextUrl.searchParams.get("query")
+            let slug = await req.nextUrl.searchParams.get("query")
             let singleProduct = await Product.findOne({ slug: slug })
            
             if (singleProduct == null) {
