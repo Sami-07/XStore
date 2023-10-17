@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { v4 as uuid } from 'uuid';
 import { useSession } from "next-auth/react"
-import Razorpay from 'razorpay';
+
 import { AiOutlineInfoCircle } from "react-icons/ai"
 import { PropagateLoader } from "react-spinners"
 import CustomLoader from '../../components/CustomLoader';
