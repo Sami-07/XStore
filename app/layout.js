@@ -2,8 +2,7 @@
 import AuthProvider from "../components/AuthProvider"
 import SubLayout from "../components/SubLayout"
 import styles from "./globals.css"
-
-
+import Script from "next/script"
 export const metadata = {
   title: "X Store - Sami",
   description: "E-Commerce Website for Shopping eBooks, etc."
@@ -21,7 +20,7 @@ export default function RootLayout({ children }) {
           <SubLayout>
             {children}
           </SubLayout>
-          <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+          <Script src="https://checkout.razorpay.com/v1/checkout.js" />
         </body>
       </html>
     </AuthProvider>
