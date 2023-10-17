@@ -116,7 +116,7 @@ export default function Cart() {
                 theme="light"
             />
             {loading && <CustomLoader />}
-           {!loading && <div className='sidebar text-slate-700 mt-40 md:mt-24 '>
+           {!loading && <div className='sidebar text-slate-700 mt-40 md:mt-28 '>
                 <div className='flex flex-col justify-center items-center gap-5 mb-10  mt-5'>
                     <div className='flex items-center justify-center gap-4 mb-5 '>
                         <PiShoppingBagLight className='my-text-color text-3xl' />

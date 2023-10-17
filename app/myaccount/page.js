@@ -184,7 +184,7 @@ export default function MyAccount() {
         <div>
 
             {!session && <CustomLoader />}
-            {session && <div className='relative top-10 mt-32 md:mt-20 min-h-screen'>
+            {session && <div className='relative top-10 mt-32 md:mt-24 min-h-screen'>
                 <ToastContainer
                     position="top-center"
                     autoClose={5000}
