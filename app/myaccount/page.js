@@ -32,7 +32,7 @@ export default function MyAccount() {
             }
         }
         fetchAccountType();    
-    }, [session])
+    }, [])
     useEffect(() => {
         async function getUserEmail() {
             const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getUserFromSession`)
@@ -63,7 +63,7 @@ export default function MyAccount() {
         }
         getUserEmail()
 
-    }, [session])
+    }, [])
     async function handleUpdate(e) {
         e.preventDefault()
 
