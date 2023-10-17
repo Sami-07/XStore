@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import connectDB from "../../../middleware/mongoose"
 import User from "../../../models/User"
+export const dynamic = "force-dynamic"
 export async function GET(req, res) {
     try {
         connectDB();
