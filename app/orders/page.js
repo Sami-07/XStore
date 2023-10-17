@@ -8,6 +8,7 @@ export default function Orders() {
    
     const [loading, setIsLoading] = useState(false);
     const [allOrders, setAllOrders] = useState([])
+    const session = useSession();
     function handleClick(orderId) {
         window.location.href = `${process.env.NEXT_PUBLIC_HOST}/order?orderid=${orderId}`
     }
