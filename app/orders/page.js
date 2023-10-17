@@ -85,7 +85,7 @@ export default function Orders() {
                                 </div>
                                 {(noOfProducts + 1) > 1 && <p className='text-lg text-center font-semibold'>+ {noOfProducts} More Products</p>}
 
-                                <button className="flex  border-purple-600  w-full border-2 py-1 font-medium px-6 focus:outline-none text-md bg-purple-500 text-white  justify-center rounded">View Order Details
+                                <button className="flex   w-full border-2 py-1 font-medium px-6 focus:outline-none text-md my-bg-color text-white  justify-center rounded">View Order Details
                                 </button>
                             </Link>
                         )
