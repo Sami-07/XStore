@@ -92,16 +92,16 @@ const router = useRouter();
         <ToastContainer
         />
         <div className="flex flex-col items-center justify-center px-6 py-2 mx-auto md:h-screen lg:py-0 md:w-[72vw] md:ml-[20vw] lg:w-auto lg:ml-[12vw] ">
-          <p className='text-3xl pb-5 md:py-5 my-font-gradient font-black'>Welcome to X Store!</p>
+          <p className='text-3xl pb-5 md:py-5 my-font-gradient font-black' data-aos="fade-up">Welcome to X Store!</p>
           <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900">
-            <img className="w-12 h-12 p-2 rounded-md mr-3 bg-black" src="/images/transparent X logo.png" alt="logo" />
+            <img  data-aos="fade-up" className="w-12 h-12 p-2 rounded-md mr-3 bg-black" src="/images/transparent X logo.png" alt="logo" />
             Store
           </a>
           <div className='flex justify-center items-center flex-col lg:flex-row gap-5  w-full '>
 
 
             <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 h-96 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-              <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+              <div  data-aos="fade-up"  className="p-6 space-y-4 md:space-y-6 sm:p-8">
                 <h1 className="text-xl font-semibold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                   Sign in to your account
                 </h1>
@@ -121,8 +121,8 @@ const router = useRouter();
                 </form>
               </div>
             </div>
-            <p className='mx-auto px-0 md:mx-0'>OR</p>
-            <div className='w-full md:w-1/2 lg:w-1/4'>
+            <p  data-aos="fade-up" className='mx-auto px-0 md:mx-0'>OR</p>
+            <div  data-aos="fade-up" className='w-full md:w-1/2 lg:w-1/4'>
               <button onClick={() => signIn("google")} className="w-full  bg-transparent hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-semibold rounded-lg text-sm px-5 py-1 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 flex justify-center items-center gap-8 text-black border-black border-2"><FcGoogle className='rounded-full bg-white text-4xl p-1' />Sign in with Google</button>
             </div>
           </div>
