@@ -35,7 +35,7 @@ export default function Admin() {
         <Link className='my-bg-color rounded-md text-white p-2 ' href="/admin/addproducts">Add Product</Link>
         <Link className='my-bg-color rounded-md text-white p-2 ' href="/admin/allorders">View All Orders</Link>
         <Link className='my-bg-color rounded-md text-white p-2 ' href="/admin/allproducts">View Inventory/Stock</Link>
-        <Link className='my-bg-color rounded-md text-white p-2 ' href="/admin/allusers">View All Usersk</Link>
+        <Link className='my-bg-color rounded-md text-white p-2 ' href="/admin/allusers">View All Users</Link>
 
       </div>}
     </div>
