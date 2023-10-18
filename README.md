@@ -1,5 +1,5 @@
 
-X Store is a Full Stack E Commerce Web App built using the latest Next.js 13, MongoDB, Next-Auth and Tailwind CSS. 
+X Store is a Full Stack E Commerce Web App built using the latest Next.js 13,Node.js, MongoDB, Next-Auth and Tailwind CSS. 
 
 New App Router: The new App Router in Next.js 13 is more powerful and efficient than the previous router. It also includes a number of new features, such as middleware, exportMode,  etc which are used in building this Web App.
 Improved server-side rendering (SSR): Implemented  Next.js 13 SSR, with dynamic imports and improved error handling.
