@@ -246,15 +246,22 @@ export default function SubLayout({ children }) {
                             <div className='fixed top-12 w-full md:top-0 z-40'>
                                 <Searchbar />
                             </div>
-                            {sessionName && <div className='text-white text-xs open-font my-bg-color  fixed top-24 font-medium py-2 px-1 flex gap-2 items-center  md:top-12 w-full z-30'>
+
+                            <div className='text-white text-xs open-font my-bg-color  fixed top-24 font-medium py-2 px-1 flex gap-2 items-center  md:top-12 w-full z-30'>
                                 <MdOutlineLocationOn className='text-xl ' />
-                                {(city && pincode) && <span className='z-30 py-2'>Deliver to {sessionName} - {city}, {pincode}</span>}
-                                {(!city || !pincode) && <span className='z-30 py-2'>Deliver to {sessionName} </span>}
-                            </div>}
+                                {sessionName && <div>
+
+                                    {(city && pincode) && <span className='z-30 py-2'>Deliver to {sessionName} - {city}, {pincode}</span>}
+                                    {(!city || !pincode) && <span className='z-30 py-2'>Deliver to {sessionName} </span>}
+
+                                </div>}
+                                {!sessionName && <span className='z-30 py-2'>Please Login</span>}
+                            </div>
+
+
                             <Link href="/cart"> <PiShoppingCartLight className='text-white text-5xl block z-50  fixed top-0 my-bg-color rounded-full p-2 right-4 ' />  {cart && <div className='  bg-red-400 fixed text-xs top-1 right-2 rounded-full py-0.5  w-5 text-center z-50'>{Object.keys(cart).length}</div>}
                             </Link>
-                            {sessionName && <div onClick={() => setFilterClicked(!filterClicked)} className='text-xs top-24 my-bg-color
-md:top-12 z-30 mt-2 absolute right-2 text-white px-1 py-1 flex justify-center items-center gap-1 rounded-lg cursor-pointer'> {!filterClicked && <AiOutlineDown className='text-xs' />}
+                            {sessionName && <div onClick={() => setFilterClicked(!filterClicked)} className='text-xs top-24 my-bg-color md:top-12 z-30 mt-2 absolute right-2 text-white px-1 py-1 flex justify-center items-center gap-1 rounded-lg cursor-pointer'> {!filterClicked && <AiOutlineDown className='text-xs' />}
                                 {filterClicked && <AiOutlineUp className='text-xs' />}
 
                                 <span>Filters</span></div>}

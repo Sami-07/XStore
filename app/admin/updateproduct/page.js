@@ -59,7 +59,7 @@ export default function EditProduct() {
                 setDesc(response.product.desc)
                 setPrevPrice(response.product.prevPrice)
                 setPrice(response.product.price)
-              
+
                 setImg(response.product.img)
                 options.map((option) => {
                     if (option.value == response.product.category) {

@@ -44,13 +44,13 @@ export default function ProductSlider({ category, topHead }) {
             {products && <div>
                 {products.length === 0 && <CustomLoader />}
                 {products.length > 0 &&
-                    <div className="mt-10  border-2 relative">
-                        <h2 className=' text-xl w-[80vw] mx-auto  text-center mt-10 font-semibold'>
+                    <div className="mt-10   relative">
+                        <h2 className=' text-2xl w-[80vw] mx-auto  text-center mt-10 font-semibold'>
                             {topHead}
                         </h2>
                         <div className=''>
                             <div ref={containerRef} className='grid auto-cols-auto gap-3 grid-flow-col overflow-x-auto snaps-inline py-4   '>
-                                <BsArrowBarRight className='absolute top-5 right-5 text-xl md:text-3xl md:right-10' />
+                              
                                 <button className='hidden md:block p-1 text-xl  h-10 border-gray-500 border-2 rounded-full md:p-2 z-10 bg-slate-100 absolute top-1/2 left-0  ' onClick={scrollLeft}><AiOutlineLeft /></button>
                                 <button className='hidden md:block p-1 text-xl  h-10 border-gray-500 rounded-full border-2 md:p-2 z-10 bg-slate-100 absolute top-1/2 right-0 md:right-4' onClick={scrollRight}><AiOutlineRight /></button>
                                 {products.map((product, index) => {

@@ -11,4 +11,4 @@
 //     }
 // }
 export { default } from "next-auth/middleware"
-export const config = { matcher: ["/cart", "/checkout", "/myaccount","/product/:path*", "/order/:path*", "/orders"] }
+export const config = { matcher: ["/cart", "/checkout", "/myaccount", "/order/:path*", "/orders"] }
