@@ -99,12 +99,12 @@ export default function Home() {
             <div className='flex justify-center items-center gap-2 md:gap-5'>
               <img data-aos="fade-up"  src="/images/landing page images/p1.webp" className='w-28 h-32 md:w-72 md:h-96 rounded-tl-[50px] rounded-bl-[50px] md:rounded-tl-[90px] md:rounded-bl-[90px]' alt='clothes image' />
               <div className='flex flex-col gap-2 md:gap-5'>
+                <img data-aos="fade-up"  src="/images/landing page images/p3.webp" className='w-24 h-28 md:w-40 md:h-48 rounded-xl ' alt='clothes image' />
                 <img data-aos="fade-up"  src="/images/landing page images/p4.webp" className='w-24 h-28 md:w-40 md:h-48 rounded-xl ' alt='clothes image' />
-                <img data-aos="fade-up"  src="/images/landing page images/p2.webp" className='w-24 h-28 md:w-40 md:h-48 rounded-xl ' alt='clothes image' />
               </div>
               <div className='flex flex-col gap-2 md:gap-5'>
                 <img data-aos="fade-up"  src="/images/landing page images/p5.webp" className='w-24 h-28 md:w-40 md:h-48 rounded-xl ' alt='clothes image' />
-                <img  data-aos="fade-up" src="/images/landing page images/p3.webp" className='w-24 h-28 md:w-40 md:h-48 rounded-xl  ' alt='clothes image' />
+                <img  data-aos="fade-up" src="/images/landing page images/p2.webp" className='w-24 h-28 md:w-40 md:h-48 rounded-xl  ' alt='clothes image' />
               </div>
               <img data-aos="fade-up"  src="/images/landing page images/p6.webp" className='w-28 h-32 md:w-72 md:h-1/2 rounded-tr-[50px] rounded-br-[50px] md:rounded-tr-[90px] md:rounded-br-[90px]' alt='clothes image' />
             </div>
