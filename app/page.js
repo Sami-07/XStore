@@ -110,7 +110,7 @@ export default function Home() {
             </div>
           </div>
           <div className='mt-20 mx-2 '>
-            <h1 data-aos="fade-up"  className='text-lg w-full md:text-3xl font-black font-work-sans text-center  my-5 my-font-gradient'>UPGRADE YOUR MINDSET WITH THE BEST BOOKS WRITTEN BY THE BEST AUTHORS</h1>
+            <h1 data-aos="fade-up"  className='text-lg w-full md:text-3xl font-black font-work-sans text-center  my-5 my-font-gradient'>LEARN FROM THE BEST AUTHORS</h1>
             <div className='flex justify-center items-center gap-2 md:gap-5 mx-5'>
               <img data-aos="fade-up"  src="/images/landing page images/b1.jpg" className='w-28 h-32 md:w-72 border-2  md:h-1/2 ' alt='clothes image' />
               <div className='flex flex-col gap-2 md:gap-5'>
